@@ -81,7 +81,7 @@ public class TestSparkMLLib implements CommandLineRunner, Serializable{
 		
 		Set<String> topics = Collections.singleton("first-topic");
 		Map<String, String> kafkaParams = new HashMap<String, String>();
-		kafkaParams.put("metadata.broker.list", "localhost:9092");
+		kafkaParams.put("metadata.broker.list", "172.17.0.8:9092");
 		
 		System.out.println("Created Spark Session");
 		
@@ -222,7 +222,7 @@ public class TestSparkMLLib implements CommandLineRunner, Serializable{
 				        
 				        String kafkaTopic = "admin2";
 				        Map<String, Object> props = new HashMap();
-				        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,"localhost:9092");
+				        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,"172.17.0.8:9092");
 				        //props.put("zookeeper.connect", "localhost:2181");
 				        props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
 				        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
