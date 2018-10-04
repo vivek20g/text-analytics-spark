@@ -64,14 +64,14 @@
 			<version>1.3.2.RELEASE</version>
 		</dependency>
 		
-		<dependency>
+<!-- 		<dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
             <version>2.5</version>
             <scope>provided</scope>
-        </dependency>
+        </dependency> -->
         
-        <dependency>
+        <!-- <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <exclusions>
@@ -80,11 +80,11 @@
                     <artifactId>spring-boot-starter-tomcat</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
+        </dependency> -->
 
 	</dependencies>
 	<build>
-		<finalName>test-spark-mllib</finalName>
+		<!-- <finalName>test-spark-mllib</finalName> -->
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
