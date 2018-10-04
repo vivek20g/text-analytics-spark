@@ -84,6 +84,7 @@
 
 	</dependencies>
 	<build>
+		<finalName>test-spark-mllib</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
