@@ -12,12 +12,13 @@ public class Application extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Logger.getLogger("org").setLevel(Level.OFF);//does not work
+		System.out.println("Main Called");
 		SpringApplication.run(Application.class, args);
 	}
 	
 	
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		System.out.println("configure Called");
         return application.sources(Application.class);
     }
 
