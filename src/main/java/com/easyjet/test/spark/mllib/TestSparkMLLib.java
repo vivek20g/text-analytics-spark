@@ -86,7 +86,8 @@ public class TestSparkMLLib implements CommandLineRunner, Serializable{
 		System.out.println("Created Spark Session");
 		
 		
-		Dataset<Row> df = spark.read().option("header", "true").csv("src/main/resources/testData.txt").toDF();
+		//Dataset<Row> df = spark.read().option("header", "true").csv("src/main/resources/testData.txt").toDF();
+		Dataset<Row> df = spark.read().option("header", "true").csv("testData.txt").toDF();
 		df.show();
 		
 		final RegexTokenizer regexTokenizer = new RegexTokenizer()
