@@ -1,0 +1,5 @@
+Classification,Text
+0,There is a murder murder in town
+1,The old women was murder
+2,Boy was hit by ball in street
+3,John sprained his ankle while playing
