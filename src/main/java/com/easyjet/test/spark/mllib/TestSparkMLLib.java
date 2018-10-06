@@ -92,8 +92,8 @@ public class TestSparkMLLib implements CommandLineRunner, Serializable{
 		//sc.hadoopConfiguration().set("fs.s3a.aws.credentials.provider","org.apache.hadoop.fs.s3a.TemporaryAWSCredentialsProvider");
 		//sc.hadoopConfiguration().set("fs.s3n.impl", "org.apache.hadoop.fs.s3native.NativeS3FileSystem");
 		sc.hadoopConfiguration().set("fs.s3.impl","org.apache.hadoop.fs.s3native.NativeS3FileSystem");
-		sc.hadoopConfiguration().set("fs.s3.awsAccessKeyId", "AKIAJ3OAKG23MD56OZBQ");
-		sc.hadoopConfiguration().set("fs.s3.awsSecretAccessKey", "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");
+		sc.hadoopConfiguration().set("fs.s3.awsAccessKeyId", "AKIAJ436OYQ2PFSNWHNA");
+		sc.hadoopConfiguration().set("fs.s3.awsSecretAccessKey", "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");
 		
 		
 		JavaRDD rdd1 = sc.textFile("s3://vivek-test-spark1/testData.txt")
