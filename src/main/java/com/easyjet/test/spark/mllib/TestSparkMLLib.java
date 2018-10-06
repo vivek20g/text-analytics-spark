@@ -85,9 +85,40 @@ public class TestSparkMLLib implements CommandLineRunner, Serializable{
 		
 		System.out.println("Created Spark Session");
 		
+		//System.setProperty("com.amazonaws.services.s3.enableV4", "true");
+		//sc.hadoopConfiguration().set("fs.s3a.impl", "org.apache.hadoop.fs.s3a.S3AFileSystem");
+		//sc.hadoopConfiguration().set("com.amazonaws.services.s3.enableV4", "true");
+		//sc.hadoopConfiguration().set("fs.s3a.endpoint", "s3.eu-west-2.amazonaws.com");
+		//sc.hadoopConfiguration().set("fs.s3a.aws.credentials.provider","org.apache.hadoop.fs.s3a.TemporaryAWSCredentialsProvider");
+		//sc.hadoopConfiguration().set("fs.s3n.impl", "org.apache.hadoop.fs.s3native.NativeS3FileSystem");
+		sc.hadoopConfiguration().set("fs.s3.impl","org.apache.hadoop.fs.s3native.NativeS3FileSystem");
+		sc.hadoopConfiguration().set("fs.s3.awsAccessKeyId", "AKIAJ3OAKG23MD56OZBQ");
+		sc.hadoopConfiguration().set("fs.s3.awsSecretAccessKey", "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");
+		
+		
+		JavaRDD rdd1 = sc.textFile("s3://vivek-test-spark1/testData.txt")
+				.map(new Function<String, TestData>() {
+				    @Override
+				    public TestData call(String line) throws Exception {
+				      String[] parts = line.split(",");
+				      TestData testData = new TestData();
+				      testData.setClassification(parts[0]);
+				      testData.setText(parts[1].trim());
+				      return testData;
+				    }
+				  });
+		System.out.println("Showing df1");
+		Dataset<Row> df1 = spark.createDataFrame(rdd1, TestData.class);
+		df1.show();
+		
+		System.out.println("Showed df1");
 		
 		//Dataset<Row> df = spark.read().option("header", "true").csv("src/main/resources/testData.txt").toDF();
-		Dataset<Row> df = spark.read().option("header", "true").csv("testData.txt").toDF();
+		Dataset<Row> df = spark.read().option("header", "true").csv("s3://vivek-test-spark1/testData.txt").toDF();
+		//https://github.com/vivek20g/text-analytics-spark/blob/master/testData.txt
+		//Dataset<Row> df = spark.read().option("header", "true").csv("testData.txt").toDF();
+		//Dataset<Row> df = spark.read().option("header", "true").csv("classpath:testData.txt").toDF();
+		
 		df.show();
 		
 		final RegexTokenizer regexTokenizer = new RegexTokenizer()
